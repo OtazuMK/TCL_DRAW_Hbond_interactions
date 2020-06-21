@@ -1,0 +1,42 @@
+##* Using VMD v1.9.4a38 
+##* Write by Otazu-Mamani K. 
+##* Usage: vmd -dispdev text -e alpha_beta_loops-color.tcl
+##***
+###**
+####*
+
+##* Step 1: Load and Select representation 
+mol new cmplx.pdb type pdb waitfor all
+
+##* Step 2: Creating representation
+#; presentation to protein
+mol modselect 0 top "protein"
+mol modcolor 0 top colorid 0
+mol modstyle 0 top newcartoon 0.2 50 
+mol modmaterial 0 top AOChalky
+
+#; representation LIG
+mol addrep top 
+mol modselect 1 top "resname UNK" 
+mol modcolor 1  top  colorid 3 
+mol modstyle 1 top licorice 0.2 30
+mol modmaterial 1 top AOChalky 
+
+mol addrep top 
+mol modselect 2 top "residue 5 7 18 19 49 92 98 121" 
+mol modcolor 2  top  colorid 2
+mol modstyle 2 top licorice 0.2 30
+mol modmaterial 2 top AOChalky 
+
+##** Step3 Change display defaults 
+display resize 1000 1000
+axes location off
+display projection orthographic
+color Display Background white
+display shadows on
+display ambientocclusion on 
+#isplay reposition 2000 2000
+#display screendistance -100
+#rotate [-180 0 0]
+
+
